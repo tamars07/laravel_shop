@@ -21,7 +21,7 @@ class PageController extends Controller
     public function getIndex(){
         $slide = Slide::all();
     	//return view('page.trangchu',['slide'=>$slide]);
-        $new_product = Product::where('new',1)->paginate(4);
+        $new_product = Product::where('new',1)->orderBy('created_at','desc')->paginate(4);
         $sanpham_khuyenmai = Product::where('promotion_price','<>',0)->paginate(8);
         return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
     }
@@ -180,5 +180,25 @@ class PageController extends Controller
     public function postLogout(){
         Auth::logout();
         return redirect()->route('trang-chu');
+    }
+
+    public function addProduct(Request $request){
+        $product = new Product;
+        $product->name = $request->name;
+        $product->id_type = $request->type;
+        $product->description = $request->desc;
+        $product->unit_price = $request->price;
+        $product->promotion_price = $request->promotion;
+        $product->unit = $request->unit;
+        $product->new = $request->new=='on'?1:0;
+        //img
+        if ($request->hasFile('img')) {
+            $file = $request->img;
+            $file->move('uploads', $file->getClientOriginalName());
+            $product->image = $file->getClientOriginalName();
+        }
+        $product->save();
+
+        return redirect()->back()->with('thongbao','Thêm sản phẩm thành công');
     }
 }

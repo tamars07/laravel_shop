@@ -81,4 +81,18 @@ Route::get('dang-xuat',[
 	'uses'=>'PageController@postLogout'
 ]);
 
+Route::get('admin',function(){
+   return view('admin.dashboard');
+});
+
+Route::get('add-product',function(){
+   return view('admin.add-product');
+});
+
+Route::post('add-product',[
+    'as'=>'add-product',
+    'uses'=>'PageController@addProduct'
+]);
+
+
 
