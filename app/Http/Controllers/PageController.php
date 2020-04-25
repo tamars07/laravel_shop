@@ -5,13 +5,14 @@ use App\Slide;
 use App\Product;
 use App\ProductType;
 use App\Cart;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Customer;
 use App\Bill;
 use App\BillDetail;
 use App\User;
 use Hash;
-use Auth;
+//use Auth;
 
 use Illuminate\Http\Request;
 
@@ -107,6 +108,10 @@ class PageController extends Controller
     }
 
     public function getLogin(){
+//        dd(Auth::check());
+        if(Auth::check()){
+            return redirect('/');
+        }
         return view('page.dangnhap');
     }
     public function getSignin(){
@@ -154,22 +159,21 @@ class PageController extends Controller
             ]
         );
         $credentials = array('email'=>$req->email,'password'=>$req->password);
+//        dd(Hash::make($req->password));
         $user = User::where([
                 ['email','=',$req->email],
-                ['status','=','1']
             ])->first();
 
         if($user){
             if(Auth::attempt($credentials)){
-
-            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+                return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
             }
             else{
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
             }
         }
         else{
-           return redirect()->back()->with(['flag'=>'danger','message'=>'Tài khoản chưa kích hoạt']); 
+           return redirect()->back()->with(['flag'=>'danger','message'=>'Tài khoản không tồn tại']);
         }
         
     }
