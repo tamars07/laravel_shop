@@ -196,7 +196,7 @@ class PageController extends Controller
         //img
         if ($request->hasFile('img')) {
             $file = $request->img;
-            $file->move('uploads', $file->getClientOriginalName());
+            $file->move('source/image/product', $file->getClientOriginalName());
             $product->image = $file->getClientOriginalName();
         }
         $product->save();
