@@ -23,7 +23,9 @@ class PageController extends Controller
     	//return view('page.trangchu',['slide'=>$slide]);
         $new_product = Product::where('new',1)->orderBy('created_at','desc')->paginate(4);
         $sanpham_khuyenmai = Product::where('promotion_price','<>',0)->paginate(8);
-        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
+        $banh_man = Product::where('id_type','=',1)->paginate(4);
+        $banh_crepe = Product::where('id_type','=',5)->paginate(4);
+        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai','banh_man','banh_crepe'));
     }
 
     public function getLoaiSp($type){
@@ -200,5 +202,10 @@ class PageController extends Controller
         $product->save();
 
         return redirect()->back()->with('thongbao','Thêm sản phẩm thành công');
+    }
+
+    public function listProduct(){
+        $products = Product::all();
+        return view('admin.list-products',compact('products'));
     }
 }

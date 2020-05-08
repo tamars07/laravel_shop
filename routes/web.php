@@ -94,5 +94,6 @@ Route::post('add-product',[
     'uses'=>'PageController@addProduct'
 ]);
 
+Route::get('list-product','PageController@listProduct');
 
 

@@ -103,6 +103,70 @@
 							</div>
 							<div class="row">{{$sanpham_khuyenmai->links()}}</div>
 						</div> <!-- .beta-products-list -->
+
+						<div class="beta-products-list">
+							<h4>Bánh mặn</h4>
+							<div class="beta-products-details">
+								<p class="pull-left">Tìm thấy {{count($banh_man)}} sản phẩm</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="row">
+								@foreach($banh_man as $item)
+									<div class="col-sm-3" style="margin-bottom: 10px;">
+										<div class="single-item">
+											<div class="single-item-header">
+												<a href="{{route('chitietsanpham',$item->id)}}"><img src="source/image/product/{{$item->image}}" alt="" height="250px"></a>
+											</div>
+											<div class="single-item-body">
+												<p class="single-item-title">{{$item->name}}</p>
+												<p class="single-item-price"  style="font-size: 18px">
+													<span class="flash-del">{{number_format($item->unit_price)}} đồng</span>
+													<span class="flash-sale">{{number_format($item->promotion_price)}} đồng</span>
+												</p>
+											</div>
+											<div class="single-item-caption" style="margin-top: 5px;">
+												<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+												<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+								@endforeach
+							</div>
+							<div class="row">{{$banh_man->links()}}</div>
+						</div> <!-- .beta-products-list -->
+
+						<div class="beta-products-list">
+							<h4>Bánh Crepe</h4>
+							<div class="beta-products-details">
+								<p class="pull-left">Tìm thấy {{count($banh_crepe)}} sản phẩm</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="row">
+								@foreach($banh_crepe as $item)
+									<div class="col-sm-3" style="margin-bottom: 10px;">
+										<div class="single-item">
+											<div class="single-item-header">
+												<a href="{{route('chitietsanpham',$item->id)}}"><img src="source/image/product/{{$item->image}}" alt="" height="250px"></a>
+											</div>
+											<div class="single-item-body">
+												<p class="single-item-title">{{$item->name}}</p>
+												<p class="single-item-price"  style="font-size: 18px">
+													<span class="flash-del">{{number_format($item->unit_price)}} đồng</span>
+													<span class="flash-sale">{{number_format($item->promotion_price)}} đồng</span>
+												</p>
+											</div>
+											<div class="single-item-caption" style="margin-top: 5px;">
+												<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+												<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+								@endforeach
+							</div>
+							<div class="row">{{$banh_crepe->links()}}</div>
+						</div> <!-- .beta-products-list -->
 					</div>
 				</div> <!-- end section with sidebar and main content -->
 
