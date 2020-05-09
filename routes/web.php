@@ -81,9 +81,7 @@ Route::get('dang-xuat',[
 	'uses'=>'PageController@postLogout'
 ]);
 
-Route::get('admin',function(){
-   return view('admin.dashboard');
-});
+Route::get('admin','PageController@dashboard');
 
 Route::get('add-product','PageController@addProduct');
 
@@ -102,5 +100,6 @@ Route::post('edit-product/{id}',[
 ]);
 Route::get('delete-product/{id}','PageController@removeProduct');
 Route::get('list-product','PageController@listProduct');
+Route::get('list-bill','PageController@listBill');
 
 

@@ -50,7 +50,7 @@ class PageController extends Controller
     	return view('page.gioithieu');
     }
 
-    public function getAddtoCart(Request $req,$id){
+    public function getAddtoCart(Request $req,$id,$quantity = 1){
         $product = Product::find($id);
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
@@ -94,6 +94,7 @@ class PageController extends Controller
         $bill->total = $cart->totalPrice;
         $bill->payment = $req->payment_method;
         $bill->note = $req->notes;
+        $bill->status_id = 1;
         $bill->save();
 
         foreach ($cart->items as $key => $value) {
@@ -245,5 +246,30 @@ class PageController extends Controller
     public function removeProduct($id){
         Product::destroy($id);
         return redirect()->back()->with('thongbao','Xóa sản phẩm thành công');
+    }
+
+    public function listBill(){
+        $bills = Bill::all();
+        $customers = array();
+        foreach($bills as $bill){
+            $customer = array();
+            $customer_name = Customer::find($bill->id_customer)->name;
+            $customers[$bill->id] = $customer_name;
+        }
+//        dd($customers);
+        return view('admin.list-bills',compact('bills','customers'));
+    }
+
+    public function dashboard(){
+        $bills = Bill::all();
+        $orders = $bills->count();
+        $customers = Customer::all()->count();
+        $products = Product::all()->count();
+        $total = 0;
+        foreach($bills as $bill){
+            $total += $bill->total;
+        }
+//        dd($orders);
+        return view('admin.dashboard',compact('orders','customers','products','total'));
     }
 }

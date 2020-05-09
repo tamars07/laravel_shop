@@ -283,7 +283,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/list-product" class="nav-link">
+                                <a href="/list-bill" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>List Bills</p>
                                 </a>
