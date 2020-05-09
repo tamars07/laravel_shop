@@ -208,4 +208,14 @@ class PageController extends Controller
         $products = Product::all();
         return view('admin.list-products',compact('products'));
     }
+
+    public function editProduct(Request $request, $id = null){
+        if($request->isMethod('get')){
+            $product = Product::find($id);
+            return view('admin.edit-product',compact('product'));
+        }else{
+            //update product
+            return redirect()->back()->with('thongbao','Cập nhật sản phẩm thành công');
+        }
+    }
 }

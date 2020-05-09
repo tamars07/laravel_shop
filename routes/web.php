@@ -89,11 +89,19 @@ Route::get('add-product',function(){
    return view('admin.add-product');
 });
 
+
+
 Route::post('add-product',[
     'as'=>'add-product',
     'uses'=>'PageController@addProduct'
 ]);
 
+Route::get('edit-product/{id}','PageController@editProduct');
+
+Route::post('edit-product',[
+    'as'=>'edit-product',
+    'uses'=>'PageController@editProduct'
+]);
 Route::get('list-product','PageController@listProduct');
 
 

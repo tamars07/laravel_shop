@@ -8,7 +8,7 @@
     List Products
 @endsection
 @section('breadcrumb')
-    <li class="breadcrumb-item active">List Products</li>
+    <li class="breadcrumb-item active">Products</li>
 @endsection
 @section('main-content')
 {{--    Bang liet ke cac san pham--}}
@@ -36,7 +36,7 @@
                     <td>{{$item->unit_price}}</td>
                     <td>{{$item->promotion_price}}</td>
                     <td>
-                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="/edit-product/{{$item->id}}" class="btn btn-primary">Edit</a>
                         <a href="#" class="btn btn-danger">Remove</a>
                     </td>
                 </tr>
