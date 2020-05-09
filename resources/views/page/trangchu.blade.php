@@ -60,7 +60,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="{{route('themgiohang',$new->id)}}"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="{{route('chitietsanpham',$new->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -71,38 +71,6 @@
 						</div> <!-- .beta-products-list -->
 
 						<div class="space50">&nbsp;</div>
-
-{{--						<div class="beta-products-list">--}}
-{{--							<h4>Danh sách sản phẩm</h4>--}}
-{{--							<div class="beta-products-details">--}}
-{{--								<p class="pull-left">Tìm thấy {{count($sanpham_khuyenmai)}} sản phẩm</p>--}}
-{{--								<div class="clearfix"></div>--}}
-{{--							</div>--}}
-{{--							<div class="row">--}}
-{{--							@foreach($sanpham_khuyenmai as $spkm)--}}
-{{--								<div class="col-sm-3" style="margin-bottom: 10px;">--}}
-{{--									<div class="single-item">--}}
-{{--										<div class="single-item-header">--}}
-{{--											<a href="{{route('chitietsanpham',$spkm->id)}}"><img src="source/image/product/{{$spkm->image}}" alt="" height="250px"></a>--}}
-{{--										</div>--}}
-{{--										<div class="single-item-body">--}}
-{{--											<p class="single-item-title">{{$spkm->name}}</p>--}}
-{{--											<p class="single-item-price"  style="font-size: 18px">--}}
-{{--												<span class="flash-del">{{number_format($spkm->unit_price)}} đồng</span>--}}
-{{--												<span class="flash-sale">{{number_format($spkm->promotion_price)}} đồng</span>--}}
-{{--											</p>--}}
-{{--										</div>--}}
-{{--										<div class="single-item-caption" style="margin-top: 5px;">--}}
-{{--											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>--}}
-{{--											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>--}}
-{{--											<div class="clearfix"></div>--}}
-{{--										</div>--}}
-{{--									</div>--}}
-{{--								</div>--}}
-{{--							@endforeach--}}
-{{--							</div>--}}
-{{--							<div class="row">{{$sanpham_khuyenmai->links()}}</div>--}}
-{{--						</div> <!-- .beta-products-list -->--}}
 
 						<div class="beta-products-list">
 							<h4>Bánh mặn</h4>
@@ -132,8 +100,8 @@
 												</p>
 											</div>
 											<div class="single-item-caption" style="margin-top: 5px;">
-												<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-												<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$item->id)}}"><i class="fa fa-shopping-cart"></i></a>
+												<a class="beta-btn primary" href="{{route('chitietsanpham',$item->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 												<div class="clearfix"></div>
 											</div>
 										</div>
@@ -171,8 +139,8 @@
 												</p>
 											</div>
 											<div class="single-item-caption" style="margin-top: 5px;">
-												<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-												<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+												<a class="add-to-cart pull-left" href="{{route('themgiohang',$item->id)}}"><i class="fa fa-shopping-cart"></i></a>
+												<a class="beta-btn primary" href="{{route('chitietsanpham',$item->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 												<div class="clearfix"></div>
 											</div>
 										</div>
