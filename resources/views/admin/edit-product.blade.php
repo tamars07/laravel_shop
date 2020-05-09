@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="editFrm" role="form" method="post" enctype="multipart/form-data" action="{{route('edit-product')}}">
+                <form id="editFrm" role="form" method="post" enctype="multipart/form-data" action="/edit-product/{{$product->id}}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="row">@if(Session::has('thongbao')){{Session::get('thongbao')}}@endif</div>
                     <div class="card-body">

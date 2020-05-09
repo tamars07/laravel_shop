@@ -96,10 +96,11 @@ Route::post('add-product',[
 
 Route::get('edit-product/{id}','PageController@editProduct');
 
-Route::post('edit-product',[
+Route::post('edit-product/{id}',[
     'as'=>'edit-product',
     'uses'=>'PageController@editProduct'
 ]);
+Route::get('delete-product/{id}','PageController@removeProduct');
 Route::get('list-product','PageController@listProduct');
 
 

@@ -190,6 +190,7 @@ class PageController extends Controller
             return view('admin.add-product',compact('product_type'));
         }
         $product = new Product;
+
         $product->name = $request->name;
         $product->id_type = $request->type;
         $product->description = $request->desc;
@@ -220,8 +221,29 @@ class PageController extends Controller
             return view('admin.edit-product',compact('product','product_type'));
         }else{
             //update product
+            $product = Product::find($id);
 
+            $product->name = $request->name;
+            $product->id_type = $request->type;
+            $product->description = $request->desc;
+            $product->unit_price = $request->price;
+            $product->promotion_price = $request->promotion;
+            $product->unit = $request->unit;
+            $product->new = $request->new=='on'?1:0;
+            if($request->hasFile('img')){
+                $file = $request->img;
+                if ($product->image != $file->getClientOriginalName()) {
+                    $file->move('source/image/product', $file->getClientOriginalName());
+                    $product->image = $file->getClientOriginalName();
+                }
+            }
+
+            $product->save();
             return redirect()->back()->with('thongbao','Cập nhật sản phẩm thành công');
         }
+    }
+    public function removeProduct($id){
+        Product::destroy($id);
+        return redirect()->back()->with('thongbao','Xóa sản phẩm thành công');
     }
 }

@@ -18,6 +18,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+        <div class="row">@if(Session::has('thongbao')){{Session::get('thongbao')}}@endif</div>
         <table id="example2" class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -37,7 +38,7 @@
                     <td>{{$item->promotion_price}}</td>
                     <td>
                         <a href="/edit-product/{{$item->id}}" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Remove</a>
+                        <a href="/delete-product/{{$item->id}}" class="btn btn-danger">Remove</a>
                     </td>
                 </tr>
             @endforeach
