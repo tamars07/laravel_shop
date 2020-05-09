@@ -85,9 +85,7 @@ Route::get('admin',function(){
    return view('admin.dashboard');
 });
 
-Route::get('add-product',function(){
-   return view('admin.add-product');
-});
+Route::get('add-product','PageController@addProduct');
 
 
 

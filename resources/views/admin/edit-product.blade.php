@@ -26,13 +26,9 @@
                         <div class="form-group">
                             <label>Product type</label>
                             <select class="form-control" id="product-type" name="type">
-                                <option value="1">Bánh mặn</option>
-                                <option value="2">Bánh ngọt</option>
-                                <option value="3">Bánh trái cây</option>
-                                <option value="4">Bánh kem</option>
-                                <option value="5">Bánh crepe</option>
-                                <option value="6">Bánh Pizza</option>
-                                <option value="7">Bánh su kem</option>
+                                @foreach($product_type as $type)
+                                    <option value="{{$type->id}}" @if($type->id == $product->id_type) selected @endif>{{$type->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -87,7 +83,6 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-{{--                        <button type="submit" class="btn btn-primary">Update</button>--}}
                         <a id="submitBtn" class="btn btn-success">Update</a>
                         <a class="btn btn-warning" onclick="reset()">Reset</a>
                     </div>

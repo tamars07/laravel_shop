@@ -185,6 +185,10 @@ class PageController extends Controller
     }
 
     public function addProduct(Request $request){
+        if($request->isMethod('get')){
+            $product_type = ProductType::all();
+            return view('admin.add-product',compact('product_type'));
+        }
         $product = new Product;
         $product->name = $request->name;
         $product->id_type = $request->type;
@@ -212,9 +216,11 @@ class PageController extends Controller
     public function editProduct(Request $request, $id = null){
         if($request->isMethod('get')){
             $product = Product::find($id);
-            return view('admin.edit-product',compact('product'));
+            $product_type = ProductType::all();
+            return view('admin.edit-product',compact('product','product_type'));
         }else{
             //update product
+
             return redirect()->back()->with('thongbao','Cập nhật sản phẩm thành công');
         }
     }
