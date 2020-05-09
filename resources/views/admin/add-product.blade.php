@@ -3,10 +3,10 @@
     Add Product
 @endsection
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Add Product</li>
+    <li class="breadcrumb-item active">Product</li>
+    <li class="breadcrumb-item active">Add</li>
 @endsection
 @section('main-content')
-{{--    tao form them san pham--}}
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary">
@@ -71,7 +71,10 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Product image</label>
                             <div class="input-group">
-                                <input type="file" name="img" required="true">
+                                <img id="blah" src="#" alt="your image" style="display: none"/>
+                            </div><br>
+                            <div class="input-group">
+                                <input type="file" name="img" required="true" onchange="readURL(this);">
                             </div>
                         </div>
                         <div class="form-check">
@@ -88,4 +91,22 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(300)
+                        .height(300);
+                };
+                reader.readAsDataURL(input.files[0]);
+                $('#blah').show();
+            }
+        }
+    </script>
 @endsection
