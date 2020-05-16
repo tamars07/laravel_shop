@@ -81,25 +81,33 @@ Route::get('dang-xuat',[
 	'uses'=>'PageController@postLogout'
 ]);
 
-Route::get('admin','PageController@dashboard');
+Route::group(['middleware' => ['admin']], function(){
+    Route::get('admin','PageController@dashboard');
 
-Route::get('add-product','PageController@addProduct');
+    Route::get('add-product','PageController@addProduct');
+
+    Route::post('add-product',[
+        'as'=>'add-product',
+        'uses'=>'PageController@addProduct'
+    ]);
+
+    Route::get('edit-product/{id}','PageController@editProduct');
+
+    Route::post('edit-product/{id}',[
+        'as'=>'edit-product',
+        'uses'=>'PageController@editProduct'
+    ]);
+
+    Route::get('delete-product/{id}','PageController@removeProduct');
+
+    Route::get('list-product','PageController@listProduct');
+
+    Route::get('list-bill','PageController@listBill');
+});
 
 
 
-Route::post('add-product',[
-    'as'=>'add-product',
-    'uses'=>'PageController@addProduct'
-]);
 
-Route::get('edit-product/{id}','PageController@editProduct');
+//Auth::routes();
 
-Route::post('edit-product/{id}',[
-    'as'=>'edit-product',
-    'uses'=>'PageController@editProduct'
-]);
-Route::get('delete-product/{id}','PageController@removeProduct');
-Route::get('list-product','PageController@listProduct');
-Route::get('list-bill','PageController@listBill');
-
-
+//Route::get('/home', 'HomeController@index')->name('home');

@@ -162,7 +162,6 @@ class PageController extends Controller
             ]
         );
         $credentials = array('email'=>$req->email,'password'=>$req->password);
-//        dd(Hash::make($req->password));
         $user = User::where([
                 ['email','=',$req->email],
             ])->first();
@@ -181,6 +180,7 @@ class PageController extends Controller
         
     }
     public function postLogout(){
+//        dd(Auth::check());
         Auth::logout();
         return redirect()->route('trang-chu');
     }
